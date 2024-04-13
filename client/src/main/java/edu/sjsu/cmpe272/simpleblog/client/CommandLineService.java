@@ -15,7 +15,6 @@ import static edu.sjsu.cmpe272.simpleblog.client.INIFile.getUserId;
 @Component
 @Command(name = "commandlineservice", mixinStandardHelpOptions = true, subcommands = {CommandLineService.PostCommand.class, CommandLineService.CreateUserCommand.class, CommandLineService.ListMessagesCommand.class})
 public class CommandLineService {
-    static final String BASE_URL = "http://localhost:8080/";
 
     @Component
     @Command(name = "list", mixinStandardHelpOptions = true, exitCodeOnExecutionException = 0)
@@ -65,7 +64,7 @@ public class CommandLineService {
 
             String userJson = mapper.writeValueAsString(userAPI);
 
-            String result = String.valueOf(postAPI("http://localhost:8080/user/create",userJson).block());
+            String result = String.valueOf(postAPI("https://sivakumarreddy6758.ignorelist.com/user/create",userJson).block());
             System.out.println(result);
             return 667;
         }
@@ -97,7 +96,7 @@ public class CommandLineService {
 
             String userJson = mapper.writeValueAsString(postAPI);
 
-            String result = String.valueOf(postAPI("http://localhost:8080/messages/create",userJson).block());
+            String result = String.valueOf(postAPI("https://sivakumarreddy6758.ignorelist.com/messages/create",userJson).block());
             System.out.println(result);
 
             return 667; // Status code placeholder
