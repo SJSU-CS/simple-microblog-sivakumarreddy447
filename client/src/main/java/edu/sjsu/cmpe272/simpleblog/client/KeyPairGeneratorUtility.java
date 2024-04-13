@@ -1,4 +1,4 @@
-package com.course.simplemicroblogcli;
+package edu.sjsu.cmpe272.simpleblog.client;
 
 import java.security.*;
 import java.security.spec.PKCS8EncodedKeySpec;
@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class KeyPairGeneratorUtility {
 
-    public static Map<String, String> createRSAKeyPair() {
+    public static String[] createKeyPair() {
         try {
             Map<String, String> keyMap = new HashMap<>();
             KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
@@ -22,12 +22,13 @@ public class KeyPairGeneratorUtility {
             String encodedPublicKey = Base64.getEncoder().encodeToString(pubKey.getEncoded());
             String encodedPrivateKey = Base64.getEncoder().encodeToString(privKey.getEncoded());
 
-            keyMap.put("publicKey", encodedPublicKey);
-            keyMap.put("privateKey", encodedPrivateKey);
-            return keyMap;
+            String   arr[] =new String[2];
+            arr[0] = encodedPublicKey;
+            arr[1] = encodedPrivateKey;
+            return arr;
         } catch (NoSuchAlgorithmException ex) {
             ex.printStackTrace();
-            return new HashMap<>();
+            return new String[2];
         }
     }
 
